@@ -1,0 +1,40 @@
+﻿@model ApiApp.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    <h4>Product Details</h4>
+    <hr/>
+
+    <table class="table table-bordered table-responsive table-hover" data-productId="@Model.ProductId">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ProductName)</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <td></td>
+        </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Description)</th>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {id = Model.ProductId}) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section scripts
+{
+    <script src="~/Scripts/app/product.js"></script>
+    <script>
+        $(function () {
+            app.ShowDetails();
+        });
+    </script>
+}
