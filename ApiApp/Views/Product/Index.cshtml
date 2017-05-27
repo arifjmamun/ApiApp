@@ -7,27 +7,33 @@
 
 <h2>Index</h2>
 
-@Html.ActionLink("Add New","Create","Product", new{@class="btn btn-default"})
-<hr/>
+@Html.ActionLink("Add New", "Create", "Product", new { @class = "btn btn-default" })
+<hr />
 
 <table class="table table-bordered table-hover table-striped">
     <thead>
-    <tr>
-        <th>@Html.DisplayNameFor(m => m.ProductName)</th>
-        <th>@Html.DisplayNameFor(m => m.Price)</th>
-        <th>@Html.DisplayNameFor(m => m.Description)</th>
-        <th width="180">Actions</th>
-    </tr>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.ProductName)</th>
+            <th>@Html.DisplayNameFor(m => m.Price)</th>
+            <th>@Html.DisplayNameFor(m => m.Description)</th>
+            <th width="180">Actions</th>
+        </tr>
     </thead>
     <tbody></tbody>
 </table>
 
+@section styles
+{
+    <link href="~/Styles/sweetalert.css" rel="stylesheet" />
+}
 @section scripts
 {
+    <script src="~/Scripts/sweetalert.min.js"></script>
     <script src="~/Scripts/app/product.js"></script>
     <script>
-        $(function() {
-            app.Init();
+        $(function () {
+            app.Index.Init();
+            $("body").on("click",".delete",app.Delete.Confirm);
         });
     </script>
 }
